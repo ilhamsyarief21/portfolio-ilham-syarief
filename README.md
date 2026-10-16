@@ -2,6 +2,8 @@
 
 Official full-stack portfolio for **Ilham Syarief** (Full-Stack Developer & UI Designer).
 
+<!-- Test verification: connected to GitHub repository -->
+
 ## Tech Stack & Architecture
 - **Frontend:** React 19, TypeScript (Strict Mode), Tailwind CSS v4, Lucide Icons.
 - **Visual Design Standard:** `high-end-visual-design` skill — Double-Bezel (Doppelrand nested containers), Button-in-Button interactive CTA trailing icons, Asymmetrical Bento grid, microscopic eyebrow badges, custom cubic-bezier fluid motion curves (`cubic-bezier(0.32, 0.72, 0, 1)`).

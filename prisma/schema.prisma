@@ -1,0 +1,125 @@
+// Prisma schema for Ilham Syarief Portfolio
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String   @default("Ilham Syarief")
+  role         String   @default("ADMIN")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model SiteSettings {
+  id           String   @id @default("default")
+  siteName     String   @default("Ilham Syarief")
+  title        String   @default("Ilham Syarief — Full-Stack Developer & UI Designer")
+  description  String   @default("Official portfolio of Ilham Syarief. Building resilient digital products, refined user interfaces, and robust systems.")
+  faviconUrl   String?
+  logoUrl      String?
+  cvUrl        String?
+  bioTitle     String   @default("Architecting systems that scale, designing interfaces that breathe.")
+  bioParagraph String   @default("I am Ilham Syarief, a Full-Stack Developer and UI Designer crafting tactile web experiences and resilient cloud architectures. I blend rigorous engineering standards with high-end visual design aesthetics.")
+  aboutImage   String   @default("https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop")
+  accentColor  String   @default("#e5262c")
+  paperColor   String   @default("#f6f4f0")
+  inkColor     String   @default("#141414")
+  footerText   String   @default("Designed & Engineered by Ilham Syarief. All rights reserved.")
+  updatedAt    DateTime @updatedAt
+}
+
+model HeroSettings {
+  id           String   @id @default("default")
+  name         String   @default("Ilham Syarief")
+  year         String   @default("2026")
+  role1        String   @default("Full-Stack Developer")
+  role2        String   @default("UI Designer")
+  letterLeft1  String   @default("P")
+  letterLeft2  String   @default("F")
+  giantLetter  String   @default("O")
+  letterRight1 String   @default("RT")
+  letterRight2 String   @default("LIO")
+  title        String   @default("Portfolio Ilham Syarief")
+  signature    String   @default("ILHAM/SYARIEF")
+  greeting     String   @default("Halo!")
+  introEnabled Boolean  @default(true)
+  height       String   @default("100svh")
+  updatedAt    DateTime @updatedAt
+}
+
+model Project {
+  id              String   @id @default(cuid())
+  title           String
+  slug            String   @unique
+  description     String
+  longDescription String?
+  imageUrl        String   @default("https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop")
+  demoUrl         String?
+  repoUrl         String?
+  tags            String   // Comma-separated or JSON string
+  order           Int      @default(0)
+  featured        Boolean  @default(false)
+  published       Boolean  @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model Skill {
+  id          String   @id @default(cuid())
+  name        String
+  category    String   // Frontend, Backend, Database, Design, DevOps
+  proficiency Int      @default(90) // 1-100
+  iconName    String?  // lucide icon name or null
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+}
+
+model Experience {
+  id          String   @id @default(cuid())
+  title       String
+  company     String
+  period      String
+  description String
+  type        String   @default("EXPERIENCE") // EXPERIENCE or EDUCATION
+  order       Int      @default(0)
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+}
+
+model SocialLink {
+  id        String   @id @default(cuid())
+  platform  String   // GitHub, LinkedIn, WhatsApp, Instagram, Email, X
+  url       String
+  icon      String   // lucide icon identifier
+  order     Int      @default(0)
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+model Message {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String?
+  message   String
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model SectionSetting {
+  id         String   @id @default(cuid())
+  sectionKey String   @unique // about, projects, skills, experience, contact
+  title      String
+  isVisible  Boolean  @default(true)
+  order      Int      @default(0)
+  updatedAt  DateTime @updatedAt
+}

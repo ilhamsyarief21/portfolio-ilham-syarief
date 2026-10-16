@@ -1,0 +1,38 @@
+{
+  "name": "ilham-syarief-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node node_modules/tsx/dist/cli.mjs server.ts",
+    "build": "node node_modules/vite/bin/vite.js build",
+    "start": "node node_modules/tsx/dist/cli.mjs server.ts",
+    "prisma:generate": "node node_modules/prisma/build/index.js generate",
+    "prisma:push": "node node_modules/prisma/build/index.js db push",
+    "seed": "node scripts/seed.mjs"
+  },
+  "dependencies": {
+    "next": "16.4.2",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "@prisma/client": "^5.22.0",
+    "bcryptjs": "^3.0.2",
+    "clsx": "^2.1.1",
+    "jose": "^5.9.6",
+    "lucide-react": "^1.16.0",
+    "tailwind-merge": "^3.0.2",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/turbopack": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.2",
+    "tailwindcss": "^4",
+    "typescript": "^5",
+    "@types/bcryptjs": "^2.4.6",
+    "prisma": "^5.22.0"
+  }
+}
